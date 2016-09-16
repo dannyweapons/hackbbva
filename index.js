@@ -10,7 +10,7 @@
 /* jshint node: true, devel: true */
 'use strict';
 
-const 
+const
   bodyParser = require('body-parser'),
   config = require('config'),
   crypto = require('crypto'),
@@ -85,6 +85,7 @@ app.post('/webhook', function (req, res) {
 
   // Make sure this is a page subscription
   if (data.object == 'page') {
+
     // Iterate over each entry
     // There may be multiple if batched
     data.entry.forEach(function(pageEntry) {
