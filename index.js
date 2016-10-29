@@ -751,20 +751,8 @@ function sendSaludo(recipientId) {
       id: recipientId
     },
     message: {
-      text: "Hola, soy $%/$ un bot que iniciara tu viaje en el mundo de Bitcoin.  ¿Sabes que es?",
+      text: "Hola, soy $%/$ un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
       metadata: "DEVELOPER_DEFINED_METADATA",
-      quick_replies = [
-        {
-          "content_type":"text",
-          "title":"Action",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ACTION"
-        },
-        {
-          "content_type":"text",
-          "title":"Comedy",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_COMEDY"
-        }
-      ]
     }
   };
 
