@@ -260,6 +260,11 @@ function receivedMessage(event) {
         sendImageMessage(senderID);
         break;
 
+      case 'hola':
+        sendSaludo(senderID);
+        break;
+
+
       case 'gif':
         sendGifMessage(senderID);
         break;
@@ -275,6 +280,8 @@ function receivedMessage(event) {
       case 'file':
         sendFileMessage(senderID);
         break;
+
+
 
       case 'button':
         sendButtonMessage(senderID);
@@ -737,6 +744,22 @@ function sendReadReceipt(recipientId) {
 
   callSendAPI(messageData);
 }
+
+function sendSaludo(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: "Hola, soy $%/$ un bot que iniciara tu viaje en el mundo de Bitcoin.",
+      metadata: "DEVELOPER_DEFINED_METADATA",
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+
 
 /*
  * Turn typing indicator on
