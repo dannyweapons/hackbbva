@@ -751,7 +751,7 @@ function sendSaludo(recipientId) {
       id: recipientId
     },
     message: {
-      text: "Hola, soy $%/$ un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
+      text: "Hola {{user_first_name}}, soy $%/$ un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
       metadata: "DEVELOPER_DEFINED_METADATA",
     }
   };
