@@ -116,9 +116,9 @@ var req = https.request(options, function(res) {
 });
 
 
-req.write({
+req.write(
   JSON.parse(data);
-});
+);
 req.end();
 
 
