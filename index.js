@@ -952,7 +952,7 @@ function sendInfoSaldoBitcoin(recipientId) {
       id: recipientId
     },
     message: {
-        text: "Tu cuenta saldo es de:" + jsonbitsoc.btc_available + "B";
+        text: "Tu cuenta saldo es de:" + jsonbitsoc.btc_available + "B"
     }
   };
 
