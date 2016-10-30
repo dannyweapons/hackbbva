@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce = 6677801366504;
+var nonce = 6877801366504;
 
 // Create the signature
 var Data = nonce + client_id + key;
@@ -995,22 +995,17 @@ function sendInfoOpc(recipientId) {
           template_type: "button",
           text: "Menu with some buttons",
           buttons:[{
+            type: "web_url",
+            url: "https://www.oculus.com/en-us/rift/",
+            title: "Open Web URL"
+          }, {
             type: "postback",
-            title: "Saldo Disponible",
+            title: "Trigger Postback",
             payload: "DEVELOPED_DEFINED_PAYLOAD"
-          },{
-            type: "postback",
-            title: "Balance",
-            payload: "DEVELOPED_DEFINED_PAYLOAD"
-          },
-          {
-            type: "postback",
-            title: "Ultimos movimientos",
-            payload: "DEVELOPED_DEFINED_PAYLOAD"
-          },{
-            type: "postback",
-            title: "Pagos",
-            payload: "DEVELOPED_DEFINED_PAYLOAD"
+          }, {
+            type: "phone_number",
+            title: "Call Phone Number",
+            payload: "+16505551234"
           }]
         }
       }
