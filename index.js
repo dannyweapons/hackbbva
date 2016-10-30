@@ -112,7 +112,6 @@ var data2 = querystring.stringify({
   key: key,
   nonce: nonce2,
   signature: signature2,
-  sort:sort
 });
 
 
@@ -122,6 +121,7 @@ var options2 = {
   host: 'api.bitso.com',
   port: 443,
   path: '/v2/user_transactions',
+  sort: 'desc',
   method: 'POST',
   headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
