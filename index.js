@@ -133,34 +133,6 @@ req.end();
 
 
 
-var options2 = {
-  host: 'https://graph.facebook.com',
-  path: '/v2.6/<100001982523733>/',
-  access_token: 'EAAZAztUsG4p0BAOOlA5Q45yhKeWpSFN20fNbsaKmCSLcjAJz67SlUq54o35uE3S2unN4KIgZB8gdrZBde4A0EZAjRUZAygCBWzE471phYKuVWDZCJbtLLfI9ymjNbAVnmL5ZAzZAwUFTL7XKRfRIBUcMZBxSUmGEvhhMjRKtZBH9pzIQZDZD',
-  method: 'GET',
-  headers: {
-        'Content-Type': 'application/json'
-    }
-};
-
-
-var req = https.request(options2, function(res) {
-  var chunks = [];
-    res.on('data', function (chunk) {
-      chunks.push(chunk);
-    });
-
-    res.on('end',function(){
-      var body = Buffer.concat(chunks);
-      var json = JSON.parse(body);
-      console.log("tipo",json);
-    });
-
-});
-
-req.write(data);
-req.end();
-
 
 
 
@@ -996,19 +968,19 @@ function sendInfoInversion(recipientId) {
     recipient: {
       id: recipientId
     },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "button",
-          text: "Welcome. Link your account.",
-          buttons:[{
-            type: "account_link",
-            url: SERVER_URL + "/authorize"
-          }]
-        }
-      }
-    }
+    setting_type:"call_to_actions",
+    thread_state : "existing_thread",
+  "call_to_actions":[
+    {
+      "type":"postback",
+      "title":"Help",
+      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+    },
+    {
+      "type":"postback",
+      "title":"Start a New Order",
+      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
+    }]
   };
 
   callSendAPI(messageData);
