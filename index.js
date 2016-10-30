@@ -552,7 +552,7 @@ function receivedPostback(event) {
   // let them know it was successful
 
 if (payload=="Balance") {
-  getBalance(nonce);
+  //getBalance(nonce);
   sendInfoSaldoBitcoin(senderID);
   sendInfoSaldoPesos(senderID);
   sendInfoFee(senderID);
