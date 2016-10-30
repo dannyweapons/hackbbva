@@ -1254,7 +1254,7 @@ function sendExitoTransferencia(recipientId) {
           text: "Transferencia exitosa",
           buttons:[{
             type: "web_url",
-            url: "https://blockchain.info/tx/7d89f1b9b3f14ccf9160939f41b0a58933bd6ebea7690c5c08a7823a476486e6",
+            url: "https://bitso.com/wallet",
             title: "Ver Transferencia"
           }]
         }
