@@ -86,48 +86,32 @@ Llamada para obtener datos de bitso
 
 
 
-function post_bitso (req,res){
-
-
-  var secret = '742fbd4029b16d7242eeb07dbeb2a9fe';//"BITSO API SECRET";
-  var key = 'svnNmzuMol';//"BITSO API KEY";
-  var client_id =151775;//;"BITSO CLIENT ID";
-  var nonce = new Date().getTime();
-
-  // Create the signature
-  var Data = nonce + client_id + key;
-  var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
-
-
-
-  var querystring = require('querystring');
-  var data = querystring.stringify({
-    key: key,
-    nonce: nonce,
-    signature: signature
-  });
-
-
-  var options = {
-    host: 'api.bitso.com',
-    port: 443,
-    path: '/v2/balance',
-    method: 'POST',
-    headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-      }
-  }
-
-  var req = https.request(options, function(res) {
-      res.on('data', function (chunk) {
-          console.log("body: " + chunk);
-      });
-  });
-  req.write(data);
-
-
+//The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
+var options = {
+  host: 'api.bitso.com',
+  path: '/v2/balance',
+  port: 443,
+  method: 'POST',
+  headers: {
+       'Content-Type': 'application/x-www-form-urlencoded'
+   }
 };
 
+callback = function(response) {
+  var str = '';
+
+  //another chunk of data has been recieved, so append it to `str`
+  response.on('data', function (chunk) {
+    str += chunk;
+  });
+
+  //the whole response has been recieved, so we just print it out here
+  response.on('end', function () {
+    console.log(str);
+  });
+}
+
+http.request(options, callback).end();
 
 
 
