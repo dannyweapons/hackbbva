@@ -108,14 +108,14 @@ var options = {
 };
 
 // Send request
-var req = https.request(options, function(res) {
+/*var req = https.request(options, function(res) {
     res.on('data', function (chunk) {
         console.log("body: " + chunk);
     });
 });
 req.write(data);
 req.end();
-
+*/
 
 
 /*
