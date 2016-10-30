@@ -112,10 +112,7 @@ var data2 = querystring.stringify({
   key: key,
   nonce: nonce2,
   signature: signature2,
-  offset:offset,
-  limit:limit,
   sort:sort,
-  book:book
 });
 
 
