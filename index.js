@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce =22477801366505;
+var nonce =22777801366505;
 var nonce2 = 19877801366505;
 
 //Para transactions
@@ -497,6 +497,54 @@ function receivedDeliveryConfirmation(event) {
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/postback-received
  *
  */
+function getTrans(){
+  var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
+  var key = "oCFkKHCMfh";//"BITSO API KEY";
+  var client_id ="151841";//;"BITSO CLIENT ID";
+  var nonce =8477801356504 ;//+1
+  var address='3KFE9UPoR2zpeHXwJesJ2a3FWMEiJym3ok';
+  var amount='0.00010000';
+
+  // Create the signature
+  var Data = nonce + client_id + key;
+  var crypto = require('crypto');
+  var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
+
+  // Build the request parameters
+  var querystring = require('querystring');
+  var data = querystring.stringify({
+    key: key,
+    nonce: nonce,
+    signature: signature,
+    amount: amount,
+    address: address
+  });
+  var options = {
+    host: 'api.bitso.com',
+    port: 443,
+    path: '/v2/bitcoin_withdrawal',
+    method: 'POST',
+    //0.00250000  cantidad
+    //adressToSend: '3KFE9UPoR2zpeHXwJesJ2a3FWMEiJym3ok',
+    //Amount: '0.00010000',
+    headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+
+      }
+  };
+
+  // Send request
+  var http = require('https');
+  var req = http.request(options, function(res) {
+      res.on('data', function (chunk) {
+          console.log("body: " + chunk);
+      });
+  });
+  req.write(data);
+  req.end();
+}
+
+
 function receivedPostback(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
@@ -516,11 +564,13 @@ if (payload=="Balance") {
   sendInfoSaldoBitcoin(senderID);
   sendInfoSaldoPesos(senderID);
   sendInfoFee(senderID);
+
 }
 else if(payload== "Pagos"){
   console.log("llego un pagos");
 }
 else{
+  getTrans();
   console.log("llego Movimientos");
 }
 
