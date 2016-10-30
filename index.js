@@ -434,7 +434,7 @@ function receivedMessage(event) {
         sendCantidad(senderID);
       break;
 
-      case RegExp('^A'):
+      case RegExp('[^A]'):
         sendCantidad(senderID);
       break;
 
