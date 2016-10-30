@@ -79,7 +79,7 @@ Llamada para obtener datos de bitso
 
 
 //Código de BITSO
-var nonce =25427801366505;
+var nonce =25627801366505;
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
@@ -114,6 +114,8 @@ var options2 = {
     }
 };
 function getBalance(nonce){
+
+
   var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
   var key = "oCFkKHCMfh";//"BITSO API KEY";
   var client_id ="151841";//;"BITSO CLIENT ID";
@@ -586,7 +588,7 @@ if (payload=="Balance") {
   sendInfoSaldoBitcoin(senderID);
   sendInfoSaldoPesos(senderID);
   sendInfoFee(senderID);
-
+  sendInfoOpc(senderID);
 }
 else if(payload== "Pagos"){
   sendPay(nonce);
