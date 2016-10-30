@@ -127,7 +127,7 @@ var options = {
 };
 
 // Send request
-var req = http.request(options, function(res) {
+var req = https.request(options, function(res) {
     res.on('data', function (chunk) {
 
 
