@@ -88,7 +88,7 @@ var nonce2 = 18077801366505;
 //Para transactions
 var offset = 0;
 var limit = 5;
-var sort = "desc";
+var sort = 'desc';
 var book = "btc_mxn";
 // Create the signature
 var Data = nonce + client_id + key;
@@ -111,11 +111,8 @@ var data = querystring.stringify({
 var data2 = querystring.stringify({
   key: key,
   nonce: nonce2,
-  signature: signature2,
-  offset:offset,
-  limit:limit,
-  sort:sort,
-  book:book
+  signature: signature,
+  sort:sort
 });
 
 
