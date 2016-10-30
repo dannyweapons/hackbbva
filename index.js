@@ -1099,20 +1099,20 @@ function sendInfoInversion(recipientId) {
         id: recipientId
       },
       message: {
-          text: "¿Quieres enviar...?"
-      },
-      quick_replies : [
-        {
-          "content_type":"text",
-          "title":"Bitcoin",
-          "payload":"Si"
-        },
-        {
-          "content_type":"text",
-          "title":"Pesos Mexicanos",
-          "payload":"No"
-        }
-      ]
+          text: "¿Quieres enviar...?",
+        quick_replies : [
+          {
+            "content_type":"text",
+            "title":"Bitcoin",
+            "payload":"Si"
+          },
+          {
+            "content_type":"text",
+            "title":"Pesos Mexicanos",
+            "payload":"No"
+          }
+        ]
+      }
 
     };
 
