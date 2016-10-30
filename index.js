@@ -117,8 +117,8 @@ var req = https.request(options, function(res) {
 
 
 req.write(data);
-var json = JSON.parse(data);
 req.end();
+var json = JSON.parse(data);
 
 
 
