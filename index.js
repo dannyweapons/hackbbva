@@ -113,9 +113,7 @@ var req = https.request(options, function(res) {
         console.log("balance " + chunk);
     });
 });
-req.write(JSON.stringify(data)){
-  write(btc_available);
-});
+req.write(JSON.parse(data));
 req.end();
 
 
