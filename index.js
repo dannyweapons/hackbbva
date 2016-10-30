@@ -79,7 +79,7 @@ Llamada para obtener datos de bitso
 
 
 //Código de BITSO
-var nonce =23377801366505;
+var nonce =24377801366505;
 function getBalance(nonce){
   var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
   var key = "oCFkKHCMfh";//"BITSO API KEY";
