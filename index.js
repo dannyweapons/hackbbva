@@ -247,6 +247,16 @@ function receivedMessage(event) {
       messageId, quickReplyPayload);
 
     sendTextMessage(senderID, "Quick reply tapped");
+
+    switch (quickReplyPayload) {
+      case 'Si':
+        sendInfoInversion(senderID);
+        break;
+      case 'No':
+        sendInfoBitcoin(senderID);
+        break;
+
+    }
     return;
   }
 
@@ -265,10 +275,10 @@ function receivedMessage(event) {
         break;
 
       case 'Si':
-        sendInfoBitcoin(senderID);
+        sendInfoInversion(senderID);
         break;
       case 'No':
-        sendInfoInversion(senderID);
+        sendInfoBitcoin(senderID);
         break;
 
       case 'gif':
