@@ -497,7 +497,7 @@ function receivedDeliveryConfirmation(event) {
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/postback-received
  *
  */
-function getTrans(nonce){
+function sendPay(nonce){
   console.log("Estoy aqui, y acabo de empezar");
   var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
   var key = "oCFkKHCMfh";//"BITSO API KEY";
@@ -569,10 +569,10 @@ if (payload=="Balance") {
 
 }
 else if(payload== "Pagos"){
+  sendPay(nonce);
   console.log("llego un pagos");
 }
 else{
-  getTrans(nonce);
   console.log("llego Movimientos");
 }
 
