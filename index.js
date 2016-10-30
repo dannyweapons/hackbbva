@@ -80,6 +80,40 @@ Llamada para obtener datos de bitso
 
 //Código de BITSO
 var nonce =24377801366505;
+var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
+var key = "oCFkKHCMfh";//"BITSO API KEY";
+var client_id ="151841";//;"BITSO CLIENT ID";
+nonce += 10000;
+
+
+//Para transactions
+var sort = 'desc';
+var Data = nonce + client_id + key;
+
+var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
+
+// Build the request parameters
+var querystring = require('querystring');
+
+var data = querystring.stringify({
+  key: key,
+  nonce: nonce,
+  signature: signature,
+});
+
+
+var jsontransacciones= '';
+
+var options2 = {
+  host: 'api.bitso.com',
+  port: 443,
+  path: '/v2/user_transactions',
+  sort: 'desc',
+  method: 'POST',
+  headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+};
 function getBalance(nonce){
   var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
   var key = "oCFkKHCMfh";//"BITSO API KEY";
