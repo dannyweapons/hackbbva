@@ -112,11 +112,11 @@ var req = https.request(options, function(res) {
     res.on('data', function (chunk) {
 
         s +=chunk;
-        console.log("balance " + chunk[btc_available]);
+        console.log("balance " + chunk);
     });
 
     res.on('end',function(chunk){
-      console.log("ksadkashd", chunk[btc_available]);
+      console.log("ksadkashd", JSON.parse(chunk)[btc_available]);
     });
 
 });
