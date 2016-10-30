@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce = 1987801366504;
+var nonce = 1977801366504;
 
 // Create the signature
 var Data = nonce + client_id + key;
@@ -108,34 +108,20 @@ var options = {
 
 // Send request
 var req = https.request(options, function(res) {
-  var body = "";
     res.on('data', function (chunk) {
-      body += chunk;
+
+
         console.log("balance " + chunk);
-    });
-    res.on('end', function() {
-        console.log(body);
     });
 });
 
 
+req.write(data);
 req.end();
 
 
-/*
-
-var req = http.request(options, function(res) {
-    var body = "";
-    res.on('data', function(resData) {
-        body += resData;
-    });
-    res.on('end', function() {
-        var json = JSON.parse(body);
-    });
-});
 
 
-*/
 
 /*
 Fin lamada para obtener datos de bitso
