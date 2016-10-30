@@ -105,7 +105,7 @@ var options = {
     }
 };
 
-
+var jsonbitsoc = '';
 // Send request
 var req = https.request(options, function(res) {
   var chunks = [];
@@ -124,6 +124,7 @@ var req = https.request(options, function(res) {
       console.log("Saldo de Bitcoin : ", json.btc_available);
       console.log("Fee. ni idea de que sea : ", json.fee);
       console.log("Saldo de pesos : ", json.mxn_available);
+      jsonbitsoc = json;
     });
 
 });
@@ -343,6 +344,7 @@ function receivedMessage(event) {
 
       case 'Si':
         sendInfoInversion(senderID);
+        sendInfoBitcoin(senderID);
         break;
       case 'No':
         sendInfoBitcoin(senderID);
@@ -937,7 +939,20 @@ function sendInfoInversion(recipientId) {
       id: recipientId
     },
     message: {
-        text: "Info Inversion"
+        text: "Tu cuenta se reconocio. Esta es tu informacion:";
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+function sendInfoSaldoBitcoin(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+        text: "Tu cuenta saldo es de:" + jsonbitsoc.btc_available + "B";
     }
   };
 
