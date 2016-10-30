@@ -152,6 +152,7 @@ var req = https.request(options2, function(res) {
 });
 
 req.write(data2);
+req.end();
 
 
 
