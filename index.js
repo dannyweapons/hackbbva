@@ -78,15 +78,6 @@ Llamada para obtener datos de bitso
 */
 
 
-var secret = '742fbd4029b16d7242eeb07dbeb2a9fe';//"BITSO API SECRET";
-var key = 'svnNmzuMol';//"BITSO API KEY";
-var client_id =151775;//;"BITSO CLIENT ID";
-var nonce = new Date().getTime();
-
-// Create the signature
-var Data = nonce + client_id + key;
-var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
-
 
 
 // Build the request parameters
@@ -96,6 +87,18 @@ var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
 
 
 function post_bitso (req,res){
+
+
+  var secret = '742fbd4029b16d7242eeb07dbeb2a9fe';//"BITSO API SECRET";
+  var key = 'svnNmzuMol';//"BITSO API KEY";
+  var client_id =151775;//;"BITSO CLIENT ID";
+  var nonce = new Date().getTime();
+
+  // Create the signature
+  var Data = nonce + client_id + key;
+  var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
+
+
 
   var querystring = require('querystring');
   var data = querystring.stringify({
