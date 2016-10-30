@@ -155,42 +155,6 @@ req.end();
 
 
 
-var options = {
-  host: 'api.bitso.com',
-  port: 443,
-  path: '/v2/balance',
-  method: 'POST',
-  headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
-};
-
-var jsonbitsoc = '';
-// Send request
-var req = https.request(options, function(res) {
-  var chunks = [];
-    res.on('data2', function (chunk) {
-
-      chunks.push(chunk);
-        console.log("balance " + chunk);
-    });
-
-    res.on('end',function(){
-      var body = Buffer.concat(chunks);
-      var json = JSON.parse(body);
-      var str = body.toString().split(',"');
-      var balance = str[0]
-      //console.log(balance.split(":")[1]);
-      jsonbitsoc = json;
-      console.log("Saldo de Bitcoin : ", json.btc_available);
-      console.log("Fee. ni idea de que sea : ", json.fee);
-      console.log("Saldo de pesos : ", json.mxn_available);
-    });
-
-});
-
-req.write(data2);
-req.end();
 
 //Request de la lista de transacciones
 
@@ -376,6 +340,46 @@ function receivedMessage(event) {
     var quickReplyPayload = quickReply.payload;
     console.log("Quick reply for message %s with payload %s",
       messageId, quickReplyPayload);
+
+
+
+      var options = {
+        host: 'api.bitso.com',
+        port: 443,
+        path: '/v2/balance',
+        method: 'POST',
+        headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+          }
+      };
+
+      var jsonbitsoc = '';
+      // Send request
+      var req = https.request(options, function(res) {
+        var chunks = [];
+          res.on('data2', function (chunk) {
+
+            chunks.push(chunk);
+              console.log("balance " + chunk);
+          });
+
+          res.on('end',function(){
+            var body = Buffer.concat(chunks);
+            var json = JSON.parse(body);
+            var str = body.toString().split(',"');
+            var balance = str[0]
+            //console.log(balance.split(":")[1]);
+            jsonbitsoc = json;
+            console.log("Saldo de Bitcoin : ", json.btc_available);
+            console.log("Fee. ni idea de que sea : ", json.fee);
+            console.log("Saldo de pesos : ", json.mxn_available);
+          });
+
+      });
+
+      req.write(data2);
+      req.end();
+
 
     switch (quickReplyPayload) {
       case 'Si':
