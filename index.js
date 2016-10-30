@@ -108,15 +108,15 @@ var options = {
 
 // Send request
 var req = https.request(options, function(res) {
+  var s = '';
     res.on('data', function (chunk) {
 
-        var s = '';
-        s = +=chunk;
+        s +=chunk;
         console.log("balance " + chunk);
     });
 
     res.on('end',function(s){
-      console.log("ksadkashd"+ s);
+      console.log("ksadkashd" + s);
     });
 
 });
