@@ -406,7 +406,12 @@ function receivedMessage(event) {
       case 'No':
         sendInfoBitcoin(senderID);
         break;
-
+      case 'Pesos':
+        sendExitoTransferencia(senderID);
+        break;
+        case 'Bitcoin':
+          sendExitoTransferencia(senderID);
+          break;
     }
     return;
   }
@@ -1232,6 +1237,29 @@ function sendMoney(recipientId) {
   callSendAPI(messageData);
 }
 
+function sendExitoTransferencia(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "Transferencia exitosa",
+          buttons:[{
+            type: "web_url",
+            url: "https://blockchain.info/tx/7d89f1b9b3f14ccf9160939f41b0a58933bd6ebea7690c5c08a7823a476486e6",
+            title: "Ver Transferencia"
+          }]
+        }
+      }
+    }
+  };
+
+  callSendAPI(messageData);
+}
 
 
 /*
