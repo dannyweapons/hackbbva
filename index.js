@@ -83,20 +83,34 @@ var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
 var nonce =12077801366505;
+var nonce2 = 12377801366505
+
 var offset = 0;
 var limit = 5;
 var sort = "desc";
 var book = "btc_mxn";
 // Create the signature
 var Data = nonce + client_id + key;
+var Data2 = nonce2 + client_id + key;
+
+
 var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
+
+var signature2 = crypto.createHmac('sha256', secret).update(Data2).digest('hex');
 
 // Build the request parameters
 var querystring = require('querystring');
+
 var data = querystring.stringify({
   key: key,
   nonce: nonce,
   signature: signature,
+});
+
+var data2 = querystring.stringify({
+  key: key,
+  nonce: nonce,
+  signature: signature2,
   offset:offset,
   limit:limit,
   sort:sort,
@@ -118,7 +132,7 @@ var options2 = {
 
 var req = https.request(options2, function(res) {
   var chunks = [];
-    res.on('data', function (chunk) {
+    res.on('data2', function (chunk) {
 
       chunks.push(chunk);
         console.log("transacciones " + chunk);
