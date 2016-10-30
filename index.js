@@ -79,7 +79,7 @@ Llamada para obtener datos de bitso
 
 
 //Código de BITSO
-var nonce =25627801366505;
+var nonce =25827801366505;
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
@@ -425,6 +425,12 @@ function receivedMessage(event) {
       case 'hola':
         sendSaludo(senderID);
         break;
+
+      case 'A Daniel Alberto del Valle Armas'
+        sendCantidad(senderID);
+      break;
+
+
 
       case 'gif':
         sendGifMessage(senderID);
@@ -1173,6 +1179,22 @@ function sendInfoPago(recipientId) {
 
   callSendAPI(messageData);
 }
+
+function sendCantidad(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+        text: "¿Que cantidad quieres transferir?",
+        metadata : "asd"
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+
 /*
  * Call the Send API. The message data goes in the body. If successful, we'll
  * get the message id in a response
