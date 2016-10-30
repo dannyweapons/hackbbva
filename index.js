@@ -108,8 +108,7 @@ var options = {
 };
 
 // Send request
-var http = require('https');
-var req = http.request(options, function(res) {
+var req = https.request(options, function(res) {
     res.on('data', function (chunk) {
         console.log("body: " + chunk);
     });
