@@ -152,7 +152,7 @@ req.end();
 
 
 
-/*
+
 
 var options = {
   host: 'api.bitso.com',
@@ -190,7 +190,6 @@ var req = https.request(options, function(res) {
 
 req.write(data);
 req.end();
-*/
 //Request de la lista de transacciones
 
 
