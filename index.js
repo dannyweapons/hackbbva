@@ -763,12 +763,12 @@ function sendSaludo(recipientId) {
         {
           "content_type":"text",
           "title":"Si",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ACTION"
+          "payload":"Si"
         },
         {
           "content_type":"text",
           "title":"No",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_COMEDY"
+          "payload":"No"
         }
       ]
     }
