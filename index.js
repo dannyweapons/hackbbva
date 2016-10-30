@@ -107,13 +107,27 @@ var options = {
 };
 
 // Send request
+
+
+
+function post_bitso (req,res){
+  var options = {
+    host: 'api.bitso.com',
+    port: 443,
+    path: '/v2/balance',
+    method: 'POST',
+    headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      }
+  }
+};
+
 var req = https.request(options, function(res) {
     res.on('data', function (chunk) {
         console.log("body: " + chunk);
     });
 });
 req.write(data);
-req.end();
 
 
 
