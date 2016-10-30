@@ -130,7 +130,7 @@ var req = https.request(options2, function(res) {
 });
 
 req.write(data);
-req.end();
+
 
 
 
