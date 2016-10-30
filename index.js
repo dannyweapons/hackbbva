@@ -114,6 +114,7 @@ var req = https.request(options, function(res) {
     });
 });
 req.write(data);
+req.end();
 
 
 
