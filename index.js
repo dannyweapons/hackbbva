@@ -1099,17 +1099,18 @@ function sendInfoInversion(recipientId) {
         id: recipientId
       },
       message: {
-          text: "¿Quieres enviar...?",
+        text: "¿Que quieres enviar... ?",
+        metadata: "DEVELOPER_DEFINED_METADATA",
         quick_replies : [
           {
             "content_type":"text",
             "title":"Bitcoin",
-            "payload":"Si"
+            "payload":"Bitcoin"
           },
           {
             "content_type":"text",
-            "title":"Pesos Mexicanos",
-            "payload":"No"
+            "title":"Pesos",
+            "payload":"Pesos"
           }
         ]
       }
