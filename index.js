@@ -92,12 +92,11 @@ var sort = 'desc';
 //var book = "btc_mxn";
 // Create the signature
 var Data = nonce + client_id + key;
-var Data2 = nonce2 + client_id + key;
 
 
 var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
 
-var signature2 = crypto.createHmac('sha256', secret).update(Data2).digest('hex');
+
 
 // Build the request parameters
 var querystring = require('querystring');
@@ -108,11 +107,6 @@ var data = querystring.stringify({
   signature: signature2,
 });
 
-var data2 = querystring.stringify({
-  key: key,
-  nonce: nonce,
-  signature: signature,
-});
 
 
 var jsontransacciones= '';
@@ -354,22 +348,17 @@ function receivedMessage(event) {
       var sort = 'desc';
       //var book = "btc_mxn";
       // Create the signature
-      var Data = nonce + client_id + key;
+
       var Data2 = nonce2 + client_id + key;
 
 
-      var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
+
 
       var signature2 = crypto.createHmac('sha256', secret).update(Data2).digest('hex');
 
       // Build the request parameters
       var querystring = require('querystring');
 
-      var data = querystring.stringify({
-        key: key,
-        nonce: nonce2,
-        signature: signature2,
-      });
 
       var data2 = querystring.stringify({
         key: key,
