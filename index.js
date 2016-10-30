@@ -104,8 +104,8 @@ var querystring = require('querystring');
 
 var data = querystring.stringify({
   key: key,
-  nonce: nonce,
-  signature: signature,
+  nonce: nonce2,
+  signature: signature2,
 });
 
 var data2 = querystring.stringify({
