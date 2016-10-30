@@ -114,8 +114,7 @@ var req = https.request(options, function(res) {
         console.log("balance " + chunk);
     });
     res.on('end', function() {
-        var json = JSON.parse(body);
-        console.log("balance",json.btc_available);
+        console.log(body.btc_available);
     });
 });
 
