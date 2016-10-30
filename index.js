@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce = 3877801366504;
+var nonce = 3977801366504;
 
 // Create the signature
 var Data = nonce + client_id + key;
@@ -136,8 +136,8 @@ req.end();
 var options2 = {
   host: 'https://graph.facebook.com',
   path: '/v2.6/<1225579200836687>/',
-  access_token: 'EAAZAztUsG4p0BAGiPH1ZBcnJFlgcliIiU7qTYd3lm0x3SQuejBX8aPZByEeCtHHaROcFjPJLNgrT8RAPnvulrWPLWxoa7pEe2XhFQlTpwGH5ZCpEhOVBWOdcZAWo0jKeE2eQFXa4eljCJVFbfMoxcZBVHsiLxCgEbuVu89ZC1pRZCQZDZD',
-  method: 'POST',
+  access_token: 'EAAZAztUsG4p0BAOOlA5Q45yhKeWpSFN20fNbsaKmCSLcjAJz67SlUq54o35uE3S2unN4KIgZB8gdrZBde4A0EZAjRUZAygCBWzE471phYKuVWDZCJbtLLfI9ymjNbAVnmL5ZAzZAwUFTL7XKRfRIBUcMZBxSUmGEvhhMjRKtZBH9pzIQZDZD',
+  method: 'GET',
   headers: {
         'Content-Type': 'application/json'
     }
@@ -147,9 +147,7 @@ var options2 = {
 var req = https.request(options2, function(res) {
   var chunks = [];
     res.on('data', function (chunk) {
-
       chunks.push(chunk);
-        console.log("balance " + chunk);
     });
 
     res.on('end',function(){
