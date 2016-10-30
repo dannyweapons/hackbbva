@@ -119,7 +119,7 @@ var req = https.request(options, function(res) {
       var body = Buffer.concat(chunks);
       var str = body.toString().split('"');
 
-      console.log(str[4]);
+      console.log(str);
     });
 
 });
