@@ -74,6 +74,58 @@ app.get('/webhook', function(req, res) {
 
 
 /*
+Llamada para obtener datos de bitso
+*/
+
+
+var secret = d8d0ac2fd6ba1d4949db0a3dc7a52170;//"BITSO API SECRET";
+var key = oCFkKHCMfh;//"BITSO API KEY";
+var client_id =151841;//;"BITSO CLIENT ID";
+var nonce = new Date().getTime();
+
+// Create the signature
+var Data = nonce + client_id + key;
+var crypto = require('crypto');
+var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
+
+
+
+// Build the request parameters
+var querystring = require('querystring');
+var data = querystring.stringify({
+  key: key,
+  nonce: nonce,
+  signature: signature
+});
+var options = {
+  host: 'api.bitso.com',
+  port: 443,
+  path: '/v2/balance',
+  method: 'POST',
+  headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+};
+
+// Send request
+var http = require('https');
+var req = http.request(options, function(res) {
+    res.on('data', function (chunk) {
+        console.log("body: " + chunk);
+    });
+});
+req.write(data);
+req.end();
+
+
+
+/*
+Fin lamada para obtener datos de bitso
+
+*/
+
+
+/*
  * All callbacks for Messenger are POST-ed. They will be sent to the same
  * webhook. Be sure to subscribe your app to your page to receive callbacks
  * for your page.
@@ -767,7 +819,7 @@ function sendSaludo(recipientId) {
       id: recipientId
     },
     message: {
-      text: "Hola, "+{{user_first_name}}+"Soy Pyramidev, un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
+      text: "Hola,Soy Pyramidev, un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
       metadata: "DEVELOPER_DEFINED_METADATA",
       quick_replies : [
         {
