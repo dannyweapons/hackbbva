@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce = 6077801366504;
+var nonce = 6477801366504;
 
 // Create the signature
 var Data = nonce + client_id + key;
@@ -322,6 +322,7 @@ function receivedMessage(event) {
         sendInfoSaldoBitcoin(senderID);
         sendInfoSaldoPesos(senderID);
         sendInfoFee(senderID);
+        sendInfoOpc(senderID);
         break;
       case 'No':
         sendInfoBitcoin(senderID);
@@ -987,36 +988,38 @@ function sendInfoOpc(recipientId) {
     recipient: {
       id: recipientId
     },
-    message:{
-    text:"send info opc",
-  /*
-    call_to_action:[
-      {
-        "type":"postback",
-        "title":"Balance",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
-      },
-      {
-        "type":"postback",
-        "title":"Ultimos Movimientos",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
-      },
-      {
-        "type":"postback",
-        "title":"Pago Amigos",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
-      },
-      {
-        "type":"postback",
-        "title":"Pago BBVA SEND",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "Menu with some buttons",
+          buttons:[{
+            type: "postback",
+            title: "Saldo Disponible",
+            payload: "DEVELOPED_DEFINED_PAYLOAD"
+          },{
+            type: "postback",
+            title: "Balance",
+            payload: "DEVELOPED_DEFINED_PAYLOAD"
+          },
+          {
+            type: "postback",
+            title: "Ultimos movimientos",
+            payload: "DEVELOPED_DEFINED_PAYLOAD"
+          },{
+            type: "postback",
+            title: "Pagos",
+            payload: "DEVELOPED_DEFINED_PAYLOAD"
+          }]
+        }
       }
-    ]*/
     }
   };
 
   callSendAPI(messageData);
 }
+
 
 
 /*
