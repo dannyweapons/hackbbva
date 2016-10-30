@@ -130,7 +130,7 @@ var options2 = {
     }
 };
 
-var req2 = https.request(options2, function(res2) {
+var req = https.request(options2, function(res2) {
   var chunks = [];
     res2.on('data2', function (chunk) {
 
@@ -150,7 +150,7 @@ var req2 = https.request(options2, function(res2) {
 
 });
 
-req2.write(data2);
+req.write(data2);
 
 
 
@@ -192,7 +192,6 @@ var req = https.request(options, function(res) {
 
 req.write(data);
 req.end();
-req2.end();
 
 //Request de la lista de transacciones
 
