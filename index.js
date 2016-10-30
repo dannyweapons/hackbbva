@@ -130,15 +130,16 @@ var options2 = {
 
 var req = https.request(options2, function(res) {
   var chunks = [];
-    res.on('data', function (chunk) {
+    res.on('data2', function (chunk) {
 
-    /*  chunks.push(chunk);
+      chunks.push(chunk);
         console.log("transacciones " + chunk);
     });
 
     res.on('end',function(){
-      var body = Buffer.concat(chunks);*/
-      console.log(chunk);
+      var buffer2 = new Buffer(32);
+      var body = buffer2.concat(chunks);
+      console.log(body);
     /*  console.log("metodo: ", json.method);
       console.log("Bitcoin : ", json.btc);
       console.log("pesos : ", json.mxn);*/
@@ -146,7 +147,7 @@ var req = https.request(options2, function(res) {
 
 });
 
-req.write(data);
+req.write(data2);
 req.end();
 
 
