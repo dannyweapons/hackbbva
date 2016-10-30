@@ -751,8 +751,20 @@ function sendSaludo(recipientId) {
       id: recipientId
     },
     message: {
-      text: "Hola {{user_first_name}}, soy $%/$ un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
+      text: "Hola, Soy Pyramid, un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
       metadata: "DEVELOPER_DEFINED_METADATA",
+      quick_replies : [
+        {
+          "content_type":"text",
+          "title":"Si",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ACTION"
+        },
+        {
+          "content_type":"text",
+          "title":"No",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_COMEDY"
+        }
+      ]
     }
   };
 
