@@ -155,9 +155,7 @@ function getBalance(nonce){
 
 var llamada = {
   host: 'https://www.tropo.com.com',
-  port: 443,
-  path: '/v2/user_transactions',
-  sort: 'desc',
+  path: '1.0/sessions?action=create&token=476c705558674f4249634d64696c6a6d5a466d496862414b454a73554a766765775369705a5847614f454f69',
   method: 'POST',
   headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -190,7 +188,7 @@ req.end();
 
 */
 
-var options = {
+var llamada = {
   host: 'api.bitso.com',
   port: 443,
   path: '/v2/balance',
@@ -202,30 +200,35 @@ var options = {
 
 var jsonbitsoc = '';
 // Send request
-var req = https.request(options, function(res) {
-  var chunks = [];
-    res.on('data', function (chunk) {
 
-      chunks.push(chunk);
-        console.log("balance " + chunk);
-    });
+app.get("blah", function(req, res) {
+  var newRequest = https.request(llamada, function(r) {
+    var chunks = [];
+      r.on('data', function (chunk) {
 
-    res.on('end',function(){
-      var body = Buffer.concat(chunks);
-      var json = JSON.parse(body);
-      var str = body.toString().split(',"');
-      var balance = str[0]
-      //console.log(balance.split(":")[1]);
-      jsonbitsoc = json;
-      console.log("Saldo de Bitcoin : ", json.btc_available);
-      console.log("Fee. ni idea de que sea : ", json.fee);
-      console.log("Saldo de pesos : ", json.mxn_available);
-    });
+        chunks.push(chunk);
+          console.log("balance " + chunk);
+      });
 
-});
+      r.on('end',function(){
+        var body = Buffer.concat(chunks);
+        var json = JSON.parse(body);
+        var str = body.toString().split(',"');
+        var balance = str[0]
+        //console.log(balance.split(":")[1]);
+        jsonbitsoc = json;
+        console.log("Saldo de Bitcoin : ", json.btc_available);
+        console.log("Fee. ni idea de que sea : ", json.fee);
+        console.log("Saldo de pesos : ", json.mxn_available);
+        res.send("hola");
+      });
 
-req.write(data);
-req.end();
+  });
+
+  newReq.write(data);
+  newReq.end();
+
+})
 
 //Request de la lista de transacciones
 
