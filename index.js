@@ -408,10 +408,12 @@ function receivedMessage(event) {
         break;
       case 'Pesos':
         sendExitoTransferencia(senderID);
+        sendGifMessage(senderID);
         sendInfoOpc(senderID);
         break;
         case 'Bitcoin':
           sendExitoTransferencia(senderID);
+          sendGifMessage(senderID);
           sendInfoOpc(senderID);
           break;
     }
@@ -702,7 +704,7 @@ function sendGifMessage(recipientId) {
       attachment: {
         type: "image",
         payload: {
-          url: SERVER_URL + "/assets/instagram_logo.gif"
+          url: SERVER_URL + "/assets/giphy.gif"
         }
       }
     }
