@@ -143,7 +143,7 @@ var req = https.request(options2, function(res) {
       var body = Buffer.concat(chunks);
       var json = JSON.parse(body);
       jsontransacciones = json;
-      console.log("datetime : ", jsontransacciones[0]);
+      console.log("datetime : ", jsontransacciones[0].datetime);
     /*  console.log("metodo: ", json.method);
       console.log("Bitcoin : ", json.btc);
       console.log("pesos : ", json.mxn);*/
