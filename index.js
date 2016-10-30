@@ -107,7 +107,6 @@ var nonce = new Date().getTime();
 
 // Create the signature
 var Data = nonce + client_id + key;
-var crypto = require('crypto');
 var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
 
 // Build the request parameters
@@ -128,7 +127,6 @@ var options = {
 };
 
 // Send request
-var http = require('https');
 var req = http.request(options, function(res) {
     res.on('data', function (chunk) {
 
