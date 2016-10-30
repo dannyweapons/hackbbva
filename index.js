@@ -79,54 +79,43 @@ Llamada para obtener datos de bitso
 
 
 //Código de BITSO
-var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
-var key = "oCFkKHCMfh";//"BITSO API KEY";
-var client_id ="151841";//;"BITSO CLIENT ID";
 var nonce =23177801366505;
-var nonce2 = 19877801366505;
-
-//Para transactions
-//var offset = 0;
-//var limit = 5;
-var sort = 'desc';
-//var book = "btc_mxn";
-// Create the signature
-var Data = nonce + client_id + key;
-var Data2 = nonce2 + client_id + key;
+function getBalance(nonce){
+  var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
+  var key = "oCFkKHCMfh";//"BITSO API KEY";
+  var client_id ="151841";//;"BITSO CLIENT ID";
+  nonce += 1000;
 
 
-var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
+  //Para transactions
+  var sort = 'desc';
+  var Data = nonce + client_id + key;
 
-var signature2 = crypto.createHmac('sha256', secret).update(Data2).digest('hex');
+  var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
 
-// Build the request parameters
-var querystring = require('querystring');
+  // Build the request parameters
+  var querystring = require('querystring');
 
-var data = querystring.stringify({
-  key: key,
-  nonce: nonce,
-  signature: signature,
-});
-
-var data2 = querystring.stringify({
-  key: key,
-  nonce: nonce2,
-  signature: signature2,
-});
+  var data = querystring.stringify({
+    key: key,
+    nonce: nonce,
+    signature: signature,
+  });
 
 
-var jsontransacciones= '';
+  var jsontransacciones= '';
 
-var options2 = {
-  host: 'api.bitso.com',
-  port: 443,
-  path: '/v2/user_transactions',
-  sort: 'desc',
-  method: 'POST',
-  headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
-};
+  var options2 = {
+    host: 'api.bitso.com',
+    port: 443,
+    path: '/v2/user_transactions',
+    sort: 'desc',
+    method: 'POST',
+    headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      }
+  };
+}
 /*
 var req = https.request(options2, function(res) {
   var chunks = [];
@@ -502,9 +491,9 @@ function sendPay(nonce){
   var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
   var key = "oCFkKHCMfh";//"BITSO API KEY";
   var client_id ="151841";//;"BITSO CLIENT ID";
-  nonce +=100000000000 ;//+1
+  nonce +=1000 ;//+1
   var address='3KFE9UPoR2zpeHXwJesJ2a3FWMEiJym3ok';
-  var amount='0.00010000';
+  var amount='0.00000100';
 
   // Create the signature
   var Data = nonce + client_id + key;
@@ -563,6 +552,7 @@ function receivedPostback(event) {
   // let them know it was successful
 
 if (payload=="Balance") {
+  getBalance(nonce);
   sendInfoSaldoBitcoin(senderID);
   sendInfoSaldoPesos(senderID);
   sendInfoFee(senderID);
