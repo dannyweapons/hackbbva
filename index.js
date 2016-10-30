@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce = 4977801366504;
+var nonce = 5177801366504;
 
 // Create the signature
 var Data = nonce + client_id + key;
@@ -320,7 +320,9 @@ function receivedMessage(event) {
       case 'Si':
         sendInfoInversion(senderID);
         sendInfoSaldoBitcoin(senderID);
+        sendInfoSaldoPesos(senderID);
         sendInfoFee(senderID);
+        sendInfoOpc(senderID);
         break;
       case 'No':
         sendInfoBitcoin(senderID);
@@ -974,6 +976,40 @@ function sendInfoFee(recipientId) {
     },
     message: {
         text: "Esta es tu comision por transaccion:" + jsonbitsoc.fee + "mxn."
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+
+function sendInfoOpc(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    call_to_action:[
+      {
+        "type":"postback",
+        "title":"Balance",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+      },
+      {
+        "type":"postback",
+        "title":"Ultimos Movimientos",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+      },
+      {
+        "type":"postback",
+        "title":"Pago Amigos",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+      },
+      {
+        "type":"postback",
+        "title":"Pago BBVA SEND",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+      }
+    ]
     }
   };
 
