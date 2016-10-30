@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce = 5277801366504;
+var nonce = 5377801366504;
 
 // Create the signature
 var Data = nonce + client_id + key;
@@ -988,8 +988,9 @@ function sendInfoOpc(recipientId) {
     recipient: {
       id: recipientId
     },
-    setting_type : "call_to_actions",
-    thread_state : "existing_thread",
+    message:{
+    text:"send info opc",
+  /*
     call_to_action:[
       {
         "type":"postback",
@@ -1011,7 +1012,7 @@ function sendInfoOpc(recipientId) {
         "title":"Pago BBVA SEND",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
       }
-    ]
+    ]*/
     }
   };
 
