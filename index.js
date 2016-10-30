@@ -154,6 +154,7 @@ req.write(data);
 
 
 
+
 var options = {
   host: 'api.bitso.com',
   port: 443,
@@ -190,7 +191,7 @@ var req = https.request(options, function(res) {
 
 req.write(data2);
 req.end();
-
+req.end();
 //Request de la lista de transacciones
 
 
