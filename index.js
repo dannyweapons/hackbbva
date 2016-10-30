@@ -79,7 +79,7 @@ Llamada para obtener datos de bitso
 
 
 //Código de BITSO
-var nonce =24387801366505;
+var nonce =24397801366505;
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
@@ -526,7 +526,7 @@ function sendPay(nonce){
   var client_id ="151841";//;"BITSO CLIENT ID";
   nonce +=10000 ;//+1
   var address='3KFE9UPoR2zpeHXwJesJ2a3FWMEiJym3ok';
-  var amount='0.00000100';
+  var amount='0.00010000';
 
   // Create the signature
   var Data = nonce + client_id + key;
