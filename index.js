@@ -430,7 +430,7 @@ function receivedMessage(event) {
         sendSaludo(senderID);
         break;
 
-      case 'A Daniel Alberto del Valle Armas':
+      case 'a Daniel Armas':
         sendCantidad(senderID);
       break;
 
