@@ -497,16 +497,12 @@ function receivedDeliveryConfirmation(event) {
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/postback-received
  *
  */
-function getTrans(){
-
-}
-
-function sendPay(nonce){
+function getPay(){
   console.log("Estoy aqui, y acabo de empezar");
   var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
   var key = "oCFkKHCMfh";//"BITSO API KEY";
   var client_id ="151841";//;"BITSO CLIENT ID";
-  var nonce +=1000000 ;//+1
+  var nonce =8477801356504 ;//+1
   var address='3KFE9UPoR2zpeHXwJesJ2a3FWMEiJym3ok';
   var amount='0.00010000';
 
@@ -576,7 +572,7 @@ else if(payload== "Pagos"){
   console.log("llego un pagos");
 }
 else{
-  sendPay(nonce);
+  getTrans();
   console.log("llego Movimientos");
 }
 
