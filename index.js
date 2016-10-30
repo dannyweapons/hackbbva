@@ -767,7 +767,7 @@ function sendSaludo(recipientId) {
       id: recipientId
     },
     message: {
-      text: "Hola, Soy Pyramidev, un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
+      text: "Hola, "+{{user_first_name}}+"Soy Pyramidev, un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
       metadata: "DEVELOPER_DEFINED_METADATA",
       quick_replies : [
         {
@@ -887,17 +887,7 @@ function sendInfoBitcoin(recipientId) {
       id: recipientId
     },
     message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "button",
-          text: "Welcome. Link your account.",
-          buttons:[{
-            type: "account_link",
-            url: SERVER_URL + "/authorize"
-          }]
-        }
-      }
+
     }
   };
 
