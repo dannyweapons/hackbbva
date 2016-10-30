@@ -592,7 +592,7 @@ if (payload=="Balance") {
 }
 else if(payload== "Pagos"){
   sendPay(nonce);
-  console.log("llego un pagos");
+  sendInfoPago(senderID);
 }
 else{
   console.log("llego Movimientos");
@@ -1161,7 +1161,18 @@ function sendInfoOpc(recipientId) {
 }
 
 
+function sendInfoPago(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+        text: "¿A quien le quieres enviar el pago?"
+    }
+  };
 
+  callSendAPI(messageData);
+}
 /*
  * Call the Send API. The message data goes in the body. If successful, we'll
  * get the message id in a response
