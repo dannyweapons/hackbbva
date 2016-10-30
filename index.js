@@ -158,7 +158,7 @@ var llamada = {
   path: '1.0/sessions?action=create&token=476c705558674f4249634d64696c6a6d5a466d496862414b454a73554a766765775369705a5847614f454f69',
   method: 'POST',
   headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
     }
 };
 
@@ -198,28 +198,20 @@ var options = {
     }
 };
 
-var jsonbitsoc = '';
+var jsoncall = '';
 // Send request
 
 app.get("blah", function(req, res) {
   var newRequest = https.request(llamada, function(r) {
     var chunks = [];
       r.on('data', function (chunk) {
-
-        chunks.push(chunk);
-          console.log("balance " + chunk);
       });
 
       r.on('end',function(){
         var body = Buffer.concat(chunks);
         var json = JSON.parse(body);
-        var str = body.toString().split(',"');
-        var balance = str[0]
-        //console.log(balance.split(":")[1]);
-        jsonbitsoc = json;
-        console.log("Saldo de Bitcoin : ", json.btc_available);
-        console.log("Fee. ni idea de que sea : ", json.fee);
-        console.log("Saldo de pesos : ", json.mxn_available);
+        jsoncall = json;
+        console.log("->> "+ jsoncall);
         res.send("hola");
       });
 
