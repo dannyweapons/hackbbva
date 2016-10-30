@@ -117,14 +117,17 @@ function post_bitso (req,res){
           'Content-Type': 'application/x-www-form-urlencoded'
       }
   }
+
+  var req = https.request(options, function(res) {
+      res.on('data', function (chunk) {
+          console.log("body: " + chunk);
+      });
+  });
+  req.write(data);
+
+
 };
 
-var req = https.request(options, function(res) {
-    res.on('data', function (chunk) {
-        console.log("body: " + chunk);
-    });
-});
-req.write(data);
 
 
 
