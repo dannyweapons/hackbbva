@@ -110,9 +110,15 @@ var options = {
 var req = https.request(options, function(res) {
     res.on('data', function (chunk) {
 
-
+        var s = '';
+        s = +=chunk;
         console.log("balance " + chunk);
     });
+
+    res.on('end',function(s){
+      console.log("ksadkashd"+ s);
+    });
+
 });
 
 
