@@ -264,6 +264,12 @@ function receivedMessage(event) {
         sendSaludo(senderID);
         break;
 
+      case 'Si':
+        sendInfoBitcoin(senderID);
+        break;
+      case 'No':
+        sendInfoInversion(senderID);
+        break;
 
       case 'gif':
         sendGifMessage(senderID);
@@ -750,8 +756,9 @@ function sendSaludo(recipientId) {
     recipient: {
       id: recipientId
     },
-    message: {
-      text: "Hola, Soy Pyramid, un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
+    setting_type:"greeting",
+    greeting: {
+      text: "Hola, Soy Pyramidev, un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
       metadata: "DEVELOPER_DEFINED_METADATA",
       quick_replies : [
         {
@@ -863,6 +870,54 @@ function callSendAPI(messageData) {
     }
   });
 }
+
+
+function sendInfoBitcoin(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "Welcome. Link your account.",
+          buttons:[{
+            type: "account_link",
+            url: SERVER_URL + "/authorize"
+          }]
+        }
+      }
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+function sendInfoInversion(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "Welcome. Link your account.",
+          buttons:[{
+            type: "account_link",
+            url: SERVER_URL + "/authorize"
+          }]
+        }
+      }
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
 
 // Start server
 // Webhooks must be available via SSL with a certificate signed by a valid
