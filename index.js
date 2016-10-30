@@ -151,6 +151,19 @@ function getBalance(nonce){
       }
   };
 }
+
+
+var llamada = {
+  host: 'https://www.tropo.com.com',
+  port: 443,
+  path: '/v2/user_transactions',
+  sort: 'desc',
+  method: 'POST',
+  headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+};
+}
 /*
 var req = https.request(options2, function(res) {
   var chunks = [];
