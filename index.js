@@ -83,8 +83,9 @@ var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
 var nonce =13577801366505;
-var nonce2 = 13777801366505
+var nonce2 = 13777801366505;
 
+//Para transactions
 var offset = 0;
 var limit = 5;
 var sort = "desc";
@@ -130,15 +131,15 @@ var options2 = {
     }
 };
 
-var req = https.request(options2, function(res2) {
+var req = https.request(options2, function(res) {
   var chunks = [];
-    res2.on('data2', function (chunk) {
+    res.on('data2', function (chunk) {
 
       chunks.push(chunk);
         console.log("transacciones " + chunk);
     });
 
-    res2.on('end',function(){
+    res.on('end',function(){
       var body = Buffer.concat(chunks);
       var json = JSON.parse(body);
       jsontransacciones = json;
@@ -181,7 +182,7 @@ var req = https.request(options, function(res) {
       var json = JSON.parse(body);
       var str = body.toString().split(',"');
       var balance = str[0]
-      console.log(balance.split(":")[1]);
+      //console.log(balance.split(":")[1]);
       jsonbitsoc = json;
       console.log("Saldo de Bitcoin : ", json.btc_available);
       console.log("Fee. ni idea de que sea : ", json.fee);
