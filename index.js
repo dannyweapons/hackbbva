@@ -430,6 +430,19 @@ function receivedMessage(event) {
       break;
 
 
+      case '0.01':
+        sendMoney(senderID);
+      break;
+      case '0.001':
+        sendMoney(senderID);
+      break;
+      case '0.0001':
+        sendMoney(senderID);
+      break;
+      case '0.00001':
+        sendMoney(senderID);
+      break;
+
 
       case 'gif':
         sendGifMessage(senderID);
@@ -1192,6 +1205,33 @@ function sendCantidad(recipientId) {
 
   callSendAPI(messageData);
 }
+
+function sendMoney(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+        text: "¿Quieres enviar...?",
+        metadata : "asd",
+        quick_replies:[
+          {
+            "content_type":"text",
+            "title":"Bitcoin",
+            "payload":"Bitcoin"
+          },
+          {
+            "content_type":"text",
+            "title":"Pesos Mexicanos",
+            "payload":"Pesos"
+          }
+        ]
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
 
 
 /*
