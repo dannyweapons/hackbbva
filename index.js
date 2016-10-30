@@ -101,7 +101,7 @@ var options = {
   path: '/v2/balance',
   method: 'POST',
   headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
     }
 };
 
@@ -115,7 +115,7 @@ var req = https.request(options, function(res) {
     });
     res.on('end', function() {
         var json = JSON.parse(body);
-        console.log(json);
+        console.log("balance",json.btc_available);
     });
 });
 
