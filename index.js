@@ -430,6 +430,10 @@ function receivedMessage(event) {
       break;
 
 
+      case '0.00001 ':
+        sendCoin(senderID);
+      break;
+
 
       case 'gif':
         sendGifMessage(senderID);
@@ -1088,6 +1092,29 @@ function sendInfoInversion(recipientId) {
         text: "Tu cuenta se reconocio. Esta es tu informacion:"
     }
   };
+
+  function sendCoin(recipientId) {
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+          text: "¿Quieres enviar...?"
+      }
+      quick_replies : [
+        {
+          "content_type":"text",
+          "title":"Bitcoin",
+          "payload":"Si"
+        },
+        {
+          "content_type":"text",
+          "title":"Pesos Mexicanos",
+          "payload":"No"
+        }
+      ]
+
+    };
 
   callSendAPI(messageData);
 }
