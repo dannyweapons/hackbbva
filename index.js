@@ -939,7 +939,7 @@ function sendInfoInversion(recipientId) {
       id: recipientId
     },
     message: {
-        text: "Tu cuenta se reconocio. Esta es tu informacion:";
+        text: "Tu cuenta se reconocio. Esta es tu informacion:"
     }
   };
 
