@@ -401,7 +401,6 @@ function receivedMessage(event) {
 
     switch (quickReplyPayload) {
       case 'Si':
-        sendInfoBitcoin(senderID);
         sendInfoOpc(senderID);
         break;
       case 'No':
