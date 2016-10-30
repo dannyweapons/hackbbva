@@ -95,15 +95,9 @@ var data = querystring.stringify({
   nonce: nonce,
   signature: signature
 });
-var options = {
-  host: 'api.bitso.com',
-  port: 443,
-  path: '/v2/balance',
-  method: 'POST',
-  headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
-};
+
+
+var jsontransacciones= '';
 
 var options2 = {
   host: 'api.bitso.com',
@@ -115,8 +109,43 @@ var options2 = {
     }
 };
 
+var req = https.request(options2, function(res) {
+  var chunks = [];
+    res.on('data', function (chunk) {
+
+      chunks.push(chunk);
+        console.log("transacciones " + chunk);
+    });
+
+    res.on('end',function(){
+      var body = Buffer.concat(chunks);
+      var json = JSON.parse(body);
+      jsontransacciones = json;
+      console.log("datetime : ", json.datetime);
+      console.log("metodo: ", json.method);
+      console.log("Bitcoin : ", json.btc);
+      console.log("pesos : ", json.mxn);
+    });
+
+});
+
+req.write(data);
+req.end();
+
+
+
+
+var options = {
+  host: 'api.bitso.com',
+  port: 443,
+  path: '/v2/balance',
+  method: 'POST',
+  headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+};
+
 var jsonbitsoc = '';
-var jsontransacciones= '';
 // Send request
 var req = https.request(options, function(res) {
   var chunks = [];
@@ -145,28 +174,6 @@ req.end();
 
 //Request de la lista de transacciones
 
-var req = https.request(options2, function(res) {
-  var chunks = [];
-    res.on('data', function (chunk) {
-
-      chunks.push(chunk);
-        console.log("transacciones " + chunk);
-    });
-
-    res.on('end',function(){
-      var body = Buffer.concat(chunks);
-      var json = JSON.parse(body);
-      jsontransacciones = json;
-      console.log("datetime : ", json.datetime);
-      console.log("metodo: ", json.method);
-      console.log("Bitcoin : ", json.btc);
-      console.log("pesos : ", json.mxn);
-    });
-
-});
-
-req.write(data);
-req.end();
 
 
 
