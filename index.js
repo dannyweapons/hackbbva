@@ -78,7 +78,7 @@ Llamada para obtener datos de bitso
 */
 
 
-/Lets require/import the HTTP module
+//Lets require/import the HTTP module
 var http = require('http');
 
 //Lets define a port we want to listen to
