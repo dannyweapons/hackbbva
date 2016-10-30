@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce = 7577801366504;
+var nonce = 7977801366504;
 
 // Create the signature
 var Data = nonce + client_id + key;
@@ -453,6 +453,18 @@ function receivedPostback(event) {
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
   sendTextMessage(senderID, "Postback called");
+
+
+if (payload=="Balance") {
+  console.log("llego un balance");
+}
+else if(payload== "Pagos"){
+  console.log("llego un pagos");
+}
+else{
+  console.log("llego Movimientos");
+}
+
 }
 
 /*
@@ -997,15 +1009,15 @@ function sendInfoOpc(recipientId) {
           buttons:[{
             type: "postback",
             title: "Balance",
-            payload: "DEVELOPED_DEFINED_PAYLOAD"
+            payload: "Balance"
           },{
             type: "postback",
             title: "Ultimos movimientos",
-            payload: "DEVELOPED_DEFINED_PAYLOAD"
+            payload: "Movimientos"
           },{
             type: "postback",
             title: "Pagos",
-            payload: "DEVELOPED_DEFINED_PAYLOAD"
+            payload: "Pagos"
           }]
         }
       }
