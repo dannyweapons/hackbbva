@@ -116,7 +116,7 @@ var req = https.request(options, function(res) {
     });
 
     res.on('end',function(chunk){
-      console.log("ksadkashd", JSON.parse(chunk)[btc_available]);
+      console.log("ksadkashd", JSON.parse(chunk));
     });
 
 });
