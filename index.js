@@ -204,10 +204,10 @@ var jsoncall = '';
 app.get("blah", function(req, res) {
   var newRequest = https.request(llamada, function(r) {
     var chunks = [];
-      r.on('data', function (chunk) {
+      res.on('data', function (chunk) {
       });
 
-      r.on('end',function(){
+      res.on('end',function(){
         var body = Buffer.concat(chunks);
         var json = JSON.parse(body);
         jsoncall = json;
