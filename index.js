@@ -90,27 +90,21 @@ var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
 
 
 // Build the request parameters
-var querystring = require('querystring');
-var data = querystring.stringify({
-  key: key,
-  nonce: nonce,
-  signature: signature
-});
-var options = {
-  host: 'api.bitso.com',
-  port: 443,
-  path: '/v2/balance',
-  method: 'POST',
-  headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
-};
 
 // Send request
 
 
 
 function post_bitso (req,res){
+
+  var querystring = require('querystring');
+  var data = querystring.stringify({
+    key: key,
+    nonce: nonce,
+    signature: signature
+  });
+
+
   var options = {
     host: 'api.bitso.com',
     port: 443,
