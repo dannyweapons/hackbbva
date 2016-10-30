@@ -78,9 +78,9 @@ Llamada para obtener datos de bitso
 */
 
 
-var secret = 'd8d0ac2fd6ba1d4949db0a3dc7a52170';//"BITSO API SECRET";
-var key = 'oCFkKHCMfh';//"BITSO API KEY";
-var client_id =151841;//;"BITSO CLIENT ID";
+var secret = '742fbd4029b16d7242eeb07dbeb2a9fe';//"BITSO API SECRET";
+var key = 'svnNmzuMol';//"BITSO API KEY";
+var client_id =151775;//;"BITSO CLIENT ID";
 var nonce = new Date().getTime();
 
 // Create the signature
