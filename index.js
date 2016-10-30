@@ -756,8 +756,7 @@ function sendSaludo(recipientId) {
     recipient: {
       id: recipientId
     },
-    setting_type:"greeting",
-    greeting: {
+    message: {
       text: "Hola, Soy Pyramidev, un bot que iniciara tu viaje en el mundo de Bitcoin. ¿Sabes que es?",
       metadata: "DEVELOPER_DEFINED_METADATA",
       quick_replies : [
