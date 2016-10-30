@@ -430,10 +430,6 @@ function receivedMessage(event) {
       break;
 
 
-      case '0.00001 ':
-        sendCoin(senderID);
-      break;
-
 
       case 'gif':
         sendGifMessage(senderID);
@@ -1093,30 +1089,6 @@ function sendInfoInversion(recipientId) {
     }
   };
 
-  function sendCoin(recipientId) {
-    var messageData = {
-      recipient: {
-        id: recipientId
-      },
-      message: {
-        text: "¿Que quieres enviar... ?",
-        metadata: "DEVELOPER_DEFINED_METADATA",
-        quick_replies : [
-          {
-            "content_type":"text",
-            "title":"Bitcoin",
-            "payload":"Bitcoin"
-          },
-          {
-            "content_type":"text",
-            "title":"Pesos",
-            "payload":"Pesos"
-          }
-        ]
-      }
-
-    };
-
   callSendAPI(messageData);
 }
 
@@ -1260,3 +1232,5 @@ function callSendAPI(messageData) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
+module.exports = app;
