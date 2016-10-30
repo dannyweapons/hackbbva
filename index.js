@@ -113,7 +113,7 @@ var req = https.request(options, function(res) {
         console.log("balance " + chunk);
     });
 });
-req.write(JSON.parse(data));
+req.write(data);
 req.end();
 
 
