@@ -399,10 +399,7 @@ function receivedMessage(event) {
 
     switch (quickReplyPayload) {
       case 'Si':
-        sendInfoInversion(senderID);
-        sendInfoSaldoBitcoin(senderID);
-        sendInfoSaldoPesos(senderID);
-        sendInfoFee(senderID);
+
         sendInfoOpc(senderID);
         break;
       case 'No':
