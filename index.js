@@ -140,6 +140,7 @@ var req = https.request(options2, function(res) {
       var body = Buffer.concat(chunks);
       console.log("asdadasd");
       console.log(body);
+      Buffer.free();
     /*  console.log("metodo: ", json.method);
       console.log("Bitcoin : ", json.btc);
       console.log("pesos : ", json.mxn);*/
