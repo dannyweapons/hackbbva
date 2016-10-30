@@ -86,10 +86,10 @@ var nonce =18377801366505;
 var nonce2 = 18577801366505;
 
 //Para transactions
-var offset = 0;
-var limit = 5;
+//var offset = 0;
+//var limit = 5;
 var sort = 'desc';
-var book = "btc_mxn";
+//var book = "btc_mxn";
 // Create the signature
 var Data = nonce + client_id + key;
 var Data2 = nonce2 + client_id + key;
@@ -111,7 +111,7 @@ var data = querystring.stringify({
 var data2 = querystring.stringify({
   key: key,
   nonce: nonce2,
-  signature: signature,
+  signature: signature2,
   sort:sort
 });
 
@@ -138,9 +138,7 @@ var req = https.request(options2, function(res) {
 
     res.on('end',function(){
       var body = Buffer.concat(chunks);
-      var json = JSON.parse(body);
-      jsontransacciones = json;
-      console.log("datetime : ", jsontransacciones[0].datetime);
+      console.log(body);
     /*  console.log("metodo: ", json.method);
       console.log("Bitcoin : ", json.btc);
       console.log("pesos : ", json.mxn);*/
@@ -153,7 +151,7 @@ req.end();
 
 
 
-
+/*
 
 var options = {
   host: 'api.bitso.com',
@@ -191,7 +189,7 @@ var req = https.request(options, function(res) {
 
 req.write(data);
 req.end();
-
+*/
 //Request de la lista de transacciones
 
 
