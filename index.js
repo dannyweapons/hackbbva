@@ -82,8 +82,8 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce =21277801366505;
-var nonce2 = 21477801366505;
+var nonce =19577801366505;
+var nonce2 = 19877801366505;
 
 //Para transactions
 //var offset = 0;
@@ -92,21 +92,27 @@ var sort = 'desc';
 //var book = "btc_mxn";
 // Create the signature
 var Data = nonce + client_id + key;
+var Data2 = nonce2 + client_id + key;
 
 
 var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
 
-
+var signature2 = crypto.createHmac('sha256', secret).update(Data2).digest('hex');
 
 // Build the request parameters
 var querystring = require('querystring');
 
 var data = querystring.stringify({
   key: key,
+  nonce: nonce,
+  signature: signature,
+});
+
+var data2 = querystring.stringify({
+  key: key,
   nonce: nonce2,
   signature: signature2,
 });
-
 
 
 var jsontransacciones= '';
@@ -121,7 +127,7 @@ var options2 = {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
 };
-
+/*
 var req = https.request(options2, function(res) {
   var chunks = [];
     res.on('data', function (chunk) {
@@ -133,11 +139,10 @@ var req = https.request(options2, function(res) {
     res.on('end',function(){
       var body = Buffer.concat(chunks);
       console.log("asdadasd");
-      console.log(JSON.parse(body));
-      Buffer = "";
-    /*  console.log("metodo: ", json.method);
+      console.log(body);
+      console.log("metodo: ", json.method);
       console.log("Bitcoin : ", json.btc);
-      console.log("pesos : ", json.mxn);*/
+      console.log("pesos : ", json.mxn);
     });
 
 });
@@ -146,9 +151,44 @@ req.write(data);
 req.end();
 
 
+*/
 
+var options = {
+  host: 'api.bitso.com',
+  port: 443,
+  path: '/v2/balance',
+  method: 'POST',
+  headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+};
 
+var jsonbitsoc = '';
+// Send request
+var req = https.request(options, function(res) {
+  var chunks = [];
+    res.on('data', function (chunk) {
 
+      chunks.push(chunk);
+        console.log("balance " + chunk);
+    });
+
+    res.on('end',function(){
+      var body = Buffer.concat(chunks);
+      var json = JSON.parse(body);
+      var str = body.toString().split(',"');
+      var balance = str[0]
+      //console.log(balance.split(":")[1]);
+      jsonbitsoc = json;
+      console.log("Saldo de Bitcoin : ", json.btc_available);
+      console.log("Fee. ni idea de que sea : ", json.fee);
+      console.log("Saldo de pesos : ", json.mxn_available);
+    });
+
+});
+
+req.write(data);
+req.end();
 
 //Request de la lista de transacciones
 
@@ -334,75 +374,6 @@ function receivedMessage(event) {
     var quickReplyPayload = quickReply.payload;
     console.log("Quick reply for message %s with payload %s",
       messageId, quickReplyPayload);
-
-      //Código de BITSO
-      var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
-      var key = "oCFkKHCMfh";//"BITSO API KEY";
-      var client_id ="151841";//;"BITSO CLIENT ID";
-      var nonce =21277801366505;
-      var nonce2 = 21477801366505;
-
-      //Para transactions
-      //var offset = 0;
-      //var limit = 5;
-      var sort = 'desc';
-      //var book = "btc_mxn";
-      // Create the signature
-
-      var Data2 = nonce2 + client_id + key;
-
-
-
-
-      var signature2 = crypto.createHmac('sha256', secret).update(Data2).digest('hex');
-
-      // Build the request parameters
-      var querystring = require('querystring');
-
-
-      var data2 = querystring.stringify({
-        key: key,
-        nonce: nonce,
-        signature: signature,
-      });
-
-      var options = {
-        host: 'api.bitso.com',
-        port: 443,
-        path: '/v2/balance',
-        method: 'POST',
-        headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-          }
-      };
-
-      var jsonbitsoc = '';
-      // Send request
-      var req = https.request(options, function(res) {
-        var chunks = [];
-          res.on('data2', function (chunk) {
-
-            chunks.push(chunk);
-              console.log("balance " + chunk);
-          });
-
-          res.on('end',function(){
-            var body = Buffer.concat(chunks);
-            var json = JSON.parse(body);
-            var str = body.toString().split(',"');
-            var balance = str[0]
-            //console.log(balance.split(":")[1]);
-            jsonbitsoc = json;
-            console.log("Saldo de Bitcoin : ", json.btc_available);
-            console.log("Fee. ni idea de que sea : ", json.fee);
-            console.log("Saldo de pesos : ", json.mxn_available);
-          });
-
-      });
-
-      req.write(data2);
-      req.end();
-
 
     switch (quickReplyPayload) {
       case 'Si':
