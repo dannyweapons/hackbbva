@@ -110,8 +110,8 @@ var data = querystring.stringify({
 
 var data2 = querystring.stringify({
   key: key,
-  nonce: nonce2,
-  signature: signature2,
+  nonce: nonce,
+  signature: signature,
 });
 
 
@@ -152,7 +152,7 @@ req.end();
 
 
 
-/*
+
 
 var options = {
   host: 'api.bitso.com',
@@ -168,7 +168,7 @@ var jsonbitsoc = '';
 // Send request
 var req = https.request(options, function(res) {
   var chunks = [];
-    res.on('data', function (chunk) {
+    res.on('data2', function (chunk) {
 
       chunks.push(chunk);
         console.log("balance " + chunk);
@@ -188,9 +188,9 @@ var req = https.request(options, function(res) {
 
 });
 
-req.write(data);
+req.write(data2);
 req.end();
-*/
+
 //Request de la lista de transacciones
 
 
