@@ -192,8 +192,8 @@ var req = https.request(options, function(res) {
 
 });
 
-req.write(data);*/
-req.end();
+req.write(data);
+req.end();*/
 
 //Request de la lista de transacciones
 
