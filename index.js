@@ -112,7 +112,10 @@ var data2 = querystring.stringify({
   key: key,
   nonce: nonce2,
   signature: signature2,
+  offset:offset,
+  limit:limit,
   sort:sort,
+  book:book
 });
 
 
@@ -140,10 +143,10 @@ var req = https.request(options2, function(res) {
       var body = Buffer.concat(chunks);
       var json = JSON.parse(body);
       jsontransacciones = json;
-      console.log("datetime : ", jsontransacciones[0]);
-    /*  console.log("metodo: ", json.method);
+      console.log("datetime : ", json.datetime);
+      console.log("metodo: ", json.method);
       console.log("Bitcoin : ", json.btc);
-      console.log("pesos : ", json.mxn);*/
+      console.log("pesos : ", json.mxn);
     });
 
 });
@@ -154,7 +157,7 @@ req.end();
 
 
 
-/*
+
 var options = {
   host: 'api.bitso.com',
   port: 443,
@@ -190,7 +193,7 @@ var req = https.request(options, function(res) {
 });
 
 req.write(data);
-req.end();*/
+req.end();
 
 //Request de la lista de transacciones
 
