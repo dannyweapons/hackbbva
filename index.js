@@ -1100,7 +1100,7 @@ function sendInfoInversion(recipientId) {
       },
       message: {
           text: "¿Quieres enviar...?"
-      }
+      },
       quick_replies : [
         {
           "content_type":"text",
