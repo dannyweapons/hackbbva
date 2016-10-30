@@ -161,7 +161,7 @@ var llamada = {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
 };
-}
+
 /*
 var req = https.request(options2, function(res) {
   var chunks = [];
@@ -188,7 +188,7 @@ req.end();
 
 */
 
-var llamada = {
+var options = {
   host: 'api.bitso.com',
   port: 443,
   path: '/v2/balance',
