@@ -917,6 +917,34 @@ function sendAccountLinking(recipientId) {
   callSendAPI(messageData);
 }
 
+function sendInfoBitcoin(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+        text: "Info Bitcoin",
+        metadata : "asd"
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+function sendInfoInversion(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+        text: "Info Inversion"
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+
 /*
  * Call the Send API. The message data goes in the body. If successful, we'll
  * get the message id in a response
@@ -947,35 +975,6 @@ function callSendAPI(messageData) {
   });
 }
 
-
-function sendInfoBitcoin(recipientId) {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-        text: "Info Bitcoin"
-    }
-  };
-
-  callSendAPI(messageData);
-}
-
-function sendInfoInversion(recipientId) {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-        text: "Info Inversion"
-    }
-  };
-
-  callSendAPI(messageData);
-  };
-
-  callSendAPI(messageData);
-}
 
 
 // Start server
