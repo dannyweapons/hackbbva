@@ -82,8 +82,8 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce =12877801366505;
-var nonce2 = 12677801366505
+var nonce =13077801366505;
+var nonce2 = 12977801366505
 
 var offset = 0;
 var limit = 5;
@@ -151,7 +151,7 @@ var req2 = https.request(options2, function(res2) {
 });
 
 req2.write(data2);
-req2.end();
+
 
 
 
@@ -192,6 +192,7 @@ var req = https.request(options, function(res) {
 
 req.write(data);
 req.end();
+req2.end();
 
 //Request de la lista de transacciones
 
