@@ -1165,7 +1165,7 @@ function sendInfoOpc(recipientId) {
         type: "template",
         payload: {
           template_type: "button",
-          text: "Menu ",
+          text: "¡Genial!, ¿Qué quieres hacer? ",
           buttons:[{
             type: "postback",
             title: "Balance",
