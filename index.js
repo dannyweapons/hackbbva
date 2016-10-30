@@ -130,15 +130,15 @@ var options2 = {
     }
 };
 
-var req = https.request(options2, function(res) {
+var req2 = https.request(options2, function(res2) {
   var chunks = [];
-    res.on('data2', function (chunk) {
+    res2.on('data2', function (chunk) {
 
       chunks.push(chunk);
         console.log("transacciones " + chunk);
     });
 
-    res.on('end',function(){
+    res2.on('end',function(){
       var body = Buffer.concat(chunks);
       var json = JSON.parse(body);
       jsontransacciones = json;
@@ -150,8 +150,8 @@ var req = https.request(options2, function(res) {
 
 });
 
-req.write(data);
-req.end();
+req2.write(data2);
+req2.end();
 
 
 
