@@ -132,12 +132,12 @@ var req = https.request(options2, function(res) {
   var chunks = [];
     res.on('data2', function (chunk) {
 
-      chunks.push(chunk);
+    /*  chunks.push(chunk);
         console.log("transacciones " + chunk);
     });
 
     res.on('end',function(){
-      var body = Buffer.concat(chunks);
+      var body = Buffer.concat(chunks);*/
       console.log(chunk);
     /*  console.log("metodo: ", json.method);
       console.log("Bitcoin : ", json.btc);
