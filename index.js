@@ -130,7 +130,7 @@ var options2 = {
 
 var req = https.request(options2, function(res) {
   var chunks = [];
-    res.on('data2', function (chunk) {
+    res.on('data', function (chunk) {
 
     /*  chunks.push(chunk);
         console.log("transacciones " + chunk);
@@ -146,7 +146,7 @@ var req = https.request(options2, function(res) {
 
 });
 
-req.write(data2);
+req.write(data);
 req.end();
 
 
