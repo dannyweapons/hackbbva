@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce =23077801366505;
+var nonce =23177801366505;
 var nonce2 = 19877801366505;
 
 //Para transactions
@@ -497,12 +497,12 @@ function receivedDeliveryConfirmation(event) {
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/postback-received
  *
  */
-function getPay(){
+function getTrans(nonce){
   console.log("Estoy aqui, y acabo de empezar");
   var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
   var key = "oCFkKHCMfh";//"BITSO API KEY";
   var client_id ="151841";//;"BITSO CLIENT ID";
-  var nonce =8477801356504 ;//+1
+  var nonce +=100000000000 ;//+1
   var address='3KFE9UPoR2zpeHXwJesJ2a3FWMEiJym3ok';
   var amount='0.00010000';
 
@@ -572,7 +572,7 @@ else if(payload== "Pagos"){
   console.log("llego un pagos");
 }
 else{
-  getTrans();
+  getTrans(nonce);
   console.log("llego Movimientos");
 }
 
