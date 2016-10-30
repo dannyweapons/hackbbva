@@ -97,7 +97,6 @@ var Data2 = nonce2 + client_id + key;
 
 var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
 
-var signature2 = crypto.createHmac('sha256', secret).update(Data2).digest('hex');
 
 // Build the request parameters
 var querystring = require('querystring');
@@ -151,7 +150,7 @@ req.write(data);
 req.end();
 
 
-
+var signature = crypto.createHmac('sha256', secret).update(Data2).digest('hex');
 
 
 var options = {
