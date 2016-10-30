@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce =22777801366505;
+var nonce =22877801366505;
 var nonce2 = 19877801366505;
 
 //Para transactions
@@ -498,6 +498,7 @@ function receivedDeliveryConfirmation(event) {
  *
  */
 function getTrans(){
+  console.log("Estoy aqui, y acabo de empezar");
   var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
   var key = "oCFkKHCMfh";//"BITSO API KEY";
   var client_id ="151841";//;"BITSO CLIENT ID";
@@ -542,6 +543,7 @@ function getTrans(){
   });
   req.write(data);
   req.end();
+  console.log("Estoy aqui, y acabo de terminar");
 }
 
 
