@@ -137,8 +137,7 @@ var req = https.request(options2, function(res) {
     });
 
     res.on('end',function(){
-      var buffer2 = new Buffer(32);
-      var body = buffer2.concat(chunks);
+      var body = Buffer.concat(chunks);
       console.log("asdadasd");
       console.log(body);
     /*  console.log("metodo: ", json.method);
