@@ -105,6 +105,10 @@ var options = {
     }
 };
 
+JSON.parse(data,(key,value) => {
+console.log(key);
+});
+
 // Send request
 var req = https.request(options, function(res) {
     res.on('data', function (chunk) {
@@ -112,9 +116,6 @@ var req = https.request(options, function(res) {
 
         console.log("balance " + chunk);
     });
-});
-JSON.parse(data,(key,value) => {
-console.log(key);
 });
 req.end();
 
