@@ -82,11 +82,11 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce =11577801366505;
+var nonce =12077801366505;
 var offset = 0;
 var limit = 5;
 var sort = "desc";
-var book = btc_mxn;
+var book = "btc_mxn";
 // Create the signature
 var Data = nonce + client_id + key;
 var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
