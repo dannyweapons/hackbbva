@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce = 7077801366504;
+var nonce = 7377801366504;
 
 // Create the signature
 var Data = nonce + client_id + key;
@@ -996,15 +996,15 @@ function sendInfoOpc(recipientId) {
           text: "Menu ",
           buttons:[{
             type: "postback",
-            title: "1",
+            title: "Balance",
             payload: "DEVELOPED_DEFINED_PAYLOAD"
           },{
             type: "postback",
-            title: "2",
+            title: "Ultimos movimientos",
             payload: "DEVELOPED_DEFINED_PAYLOAD"
           },{
             type: "postback",
-            title: "3",
+            title: "Pagos",
             payload: "DEVELOPED_DEFINED_PAYLOAD"
           }]
         }
