@@ -78,40 +78,68 @@ Llamada para obtener datos de bitso
 */
 
 
+/Lets require/import the HTTP module
+var http = require('http');
 
+//Lets define a port we want to listen to
+const PORT=8080;
 
-// Build the request parameters
-
-// Send request
-
-
-
-//The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
-var options = {
-  host: 'api.bitso.com',
-  path: '/v2/balance',
-  port: 443,
-  method: 'POST',
-  headers: {
-       'Content-Type': 'application/x-www-form-urlencoded'
-   }
-};
-
-callback = function(response) {
-  var str = '';
-
-  //another chunk of data has been recieved, so append it to `str`
-  response.on('data', function (chunk) {
-    str += chunk;
-  });
-
-  //the whole response has been recieved, so we just print it out here
-  response.on('end', function () {
-    console.log(str);
-  });
+//We need a function which handles requests and send response
+function handleRequest(request, response){
+    response.end('It Works!! Path Hit: ' + request.url);
 }
 
-http.request(options, callback).end();
+//Create a server
+var server = http.createServer(handleRequest);
+
+//Lets start our server
+server.listen(PORT, function(){
+    //Callback triggered when server is successfully listening. Hurray!
+    console.log("Server listening on: http://localhost:%s", PORT);
+});
+
+
+//Código de BITSO
+var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
+var key = "oCFkKHCMfh";//"BITSO API KEY";
+var client_id ="151841";//;"BITSO CLIENT ID";
+var nonce = new Date().getTime();
+
+// Create the signature
+var Data = nonce + client_id + key;
+var crypto = require('crypto');
+var signature = crypto.createHmac('sha256', secret).update(Data).digest('hex');
+
+// Build the request parameters
+var querystring = require('querystring');
+var data = querystring.stringify({
+  key: key,
+  nonce: nonce,
+  signature: signature
+});
+var options = {
+  host: 'api.bitso.com',
+  port: 443,
+  path: '/v2/balance',
+  method: 'POST',
+  headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+};
+
+// Send request
+var http = require('https');
+var req = http.request(options, function(res) {
+    res.on('data', function (chunk) {
+
+
+        console.log("balance " + chunk);
+    });
+});
+req.write(data);
+req.end();
+
+
 
 
 
