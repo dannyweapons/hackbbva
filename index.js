@@ -315,8 +315,6 @@ function receivedMessage(event) {
     console.log("Quick reply for message %s with payload %s",
       messageId, quickReplyPayload);
 
-    sendTextMessage(senderID, "Quick reply tapped");
-
     switch (quickReplyPayload) {
       case 'Si':
         sendInfoInversion(senderID);
