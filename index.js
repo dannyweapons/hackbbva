@@ -82,7 +82,7 @@ Llamada para obtener datos de bitso
 var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
 var key = "oCFkKHCMfh";//"BITSO API KEY";
 var client_id ="151841";//;"BITSO CLIENT ID";
-var nonce = 8877801366504;
+var nonce = 9077801366504;
 
 // Create the signature
 var Data = nonce + client_id + key;
@@ -105,7 +105,18 @@ var options = {
     }
 };
 
+var options2 = {
+  host: 'api.bitso.com',
+  port: 443,
+  path: '/v2/user_transactions',
+  method: 'POST',
+  headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+};
+
 var jsonbitsoc = '';
+var jsontransacciones= '';
 // Send request
 var req = https.request(options, function(res) {
   var chunks = [];
@@ -132,7 +143,33 @@ var req = https.request(options, function(res) {
 req.write(data);
 req.end();
 
+//Request de la lista de transacciones
 
+var req2 = https.request(options2, function(res) {
+  var chunks = [];
+    res.on('data', function (chunk) {
+
+      chunks.push(chunk);
+        console.log("transacciones " + chunk);
+    });
+
+    res.on('end',function(){
+      var body = Buffer.concat(chunks);
+      var json = JSON.parse(body);
+      var str = body.toString().split(',"');
+      var balance = str[0]
+      console.log(balance.split(":")[1]);
+      jsontransacciones = json;
+      console.log("datetime : ", json.datetime);
+      console.log("metodo: ", json.method);
+      console.log("Bitcoin : ", json.btc);
+      console.log("pesos : ", json.mxn);
+    });
+
+});
+
+req.write(data);
+req.end();
 
 
 
