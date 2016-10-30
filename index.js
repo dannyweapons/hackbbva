@@ -84,7 +84,7 @@ function getBalance(nonce){
   var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
   var key = "oCFkKHCMfh";//"BITSO API KEY";
   var client_id ="151841";//;"BITSO CLIENT ID";
-  nonce += 1000;
+  nonce += 10000;
 
 
   //Para transactions
@@ -491,7 +491,7 @@ function sendPay(nonce){
   var secret = "d8d0ac2fd6ba1d4949db0a3dc7a52170";//"BITSO API SECRET";
   var key = "oCFkKHCMfh";//"BITSO API KEY";
   var client_id ="151841";//;"BITSO CLIENT ID";
-  nonce +=1000 ;//+1
+  nonce +=10000 ;//+1
   var address='3KFE9UPoR2zpeHXwJesJ2a3FWMEiJym3ok';
   var amount='0.00000100';
 
