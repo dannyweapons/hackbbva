@@ -108,21 +108,35 @@ var options = {
 
 // Send request
 var req = https.request(options, function(res) {
+  var body = "";
     res.on('data', function (chunk) {
-
-
+      body += data;
         console.log("balance " + chunk);
+    });
+    res.on('end', function() {
+        var json = JSON.parse(body);
+        console.log(json);
     });
 });
 
 
-req.write(data);
 req.end();
-var json = JSON.parse(data);
 
 
+/*
+
+var req = http.request(options, function(res) {
+    var body = "";
+    res.on('data', function(resData) {
+        body += resData;
+    });
+    res.on('end', function() {
+        var json = JSON.parse(body);
+    });
+});
 
 
+*/
 
 /*
 Fin lamada para obtener datos de bitso
