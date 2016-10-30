@@ -116,7 +116,7 @@ var req = https.request(options, function(res) {
     });
 
     res.on('end',function(s){
-      console.log("ksadkashd" + s);
+      console.log("ksadkashd", s.btc_available);
     });
 
 });
