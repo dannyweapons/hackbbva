@@ -439,16 +439,16 @@ function receivedMessage(event) {
       break;
 
 
-      case '0.01':
+      case '.01':
         sendMoney(senderID);
       break;
-      case '0.001':
+      case '.001':
         sendMoney(senderID);
       break;
-      case '0.0001':
+      case '.0001':
         sendMoney(senderID);
       break;
-      case '0.00001':
+      case '.00001':
         sendMoney(senderID);
       break;
 
@@ -1176,7 +1176,7 @@ function sendInfoOpc(recipientId) {
             payload: "Movimientos"
           },{
             type: "postback",
-            title: "Pagos",
+            title: "Deposita a un amigo",
             payload: "Pagos"
           }]
         }
